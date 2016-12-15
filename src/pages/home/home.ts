@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 
 import { NavController, AlertController } from 'ionic-angular';
-
 import { BarcodeScanner } from 'ionic-native';
 import { Geolocation } from 'ionic-native';
 
-import {ItemModel} from 'model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'page-home',
@@ -27,7 +26,7 @@ export class HomePage {
     // data can be a set of coordinates, or an error (if an error occurred).
       this.lat = data.coords.latitude;
       this.lon = data.coords.longitude;
-      this.timestamp = data.timestamp;
+      this.timestamp = moment(data.timestamp);
     });
     
   }
@@ -51,6 +50,10 @@ export class HomePage {
         // An error occurred
         this.presentAlert('Error scanning barcode');
     });
+  }
+
+  delete(item):void {
+    this.barcodes.splice(this.barcodes.indexOf(item),1);
   }
 
   presentAlert(text:string) {

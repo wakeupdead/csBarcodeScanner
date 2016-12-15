@@ -13,12 +13,8 @@
   </ion-fab>
 
   <ion-card>
-
-  <ion-card-header>
-      Position
-    </ion-card-header>
-
     <ion-card-content>
+      <ion-icon item-left name="globe"></ion-icon>
       <h4>Lat: {{lat}}</h4><h4>Lon: {{lon}}</h4>
       <p>{{timestamp}}</p>
     </ion-card-content>
@@ -29,10 +25,12 @@
     <ion-item *ngFor="let item of barcodes">
       
       <h2>{{item.text}}</h2>
-      <p>Lat: {{item.lat}} Lon: {{item.lon}}</p>
-      <button item-right ion-icon name="trash" (click)="delete(item.id)">
+      <h4>Lat: {{item.lat}} Lon: {{item.lon}}</h4>
 
+      <button ion-button clear item-right large (click)="delete(item)">
+        <ion-icon name="trash"></ion-icon>
       </button>
+
     </ion-item>
   </ion-list>
 
