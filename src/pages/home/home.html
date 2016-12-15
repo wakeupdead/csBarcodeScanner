@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      CS Barcode Scanner
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-fab top right edge>
+    <button ion-fab (click)="scan()"><ion-icon name="barcode"></ion-icon></button>
+  </ion-fab>
+
+  <ion-card>
+
+  <ion-card-header>
+      Position
+    </ion-card-header>
+
+    <ion-card-content>
+      <h4>Lat: {{lat}}</h4><h4>Lon: {{lon}}</h4>
+      <p>{{timestamp}}</p>
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor="let item of barcodes">
+      
+      <h2>{{item.text}}</h2>
+      <p>Lat: {{item.lat}} Lon: {{item.lon}}</p>
+      <button item-right ion-icon name="trash" (click)="delete(item.id)">
+
+      </button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
